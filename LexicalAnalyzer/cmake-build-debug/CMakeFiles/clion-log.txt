@@ -1,0 +1,4 @@
+C:\Users\User\AppData\Local\JetBrains\CLion2020.2\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/User/CLionProjects/LexicalAnalyzer
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /cygdrive/c/Users/User/CLionProjects/LexicalAnalyzer/cmake-build-debug

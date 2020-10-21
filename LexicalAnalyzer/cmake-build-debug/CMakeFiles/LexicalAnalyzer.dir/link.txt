@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/LexicalAnalyzer.dir/main.cpp.o CMakeFiles/LexicalAnalyzer.dir/lexical.cpp.o  -o LexicalAnalyzer.exe -Wl,--out-implib,libLexicalAnalyzer.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/User/CLionProjects/LexicalAnalyzer/lexical.cpp
+lexical.h
+/cygdrive/c/Users/User/CLionProjects/LexicalAnalyzer/lexical.h
+
+/cygdrive/c/Users/User/CLionProjects/LexicalAnalyzer/lexical.h
+iostream
+-
+fstream
+-
+string
+-
+vector
+-
+algorithm
+-
+

@@ -9,7 +9,7 @@ bool isID(const string &str){
     if (str[0] == '_')
         counter++;
     for(counter; counter < str.size(); counter++)
-        if(!(isalnum(str[counter])))
+        if(!(isalnum(str[counter])) && str[counter] != '_')
             return false;
     return true;
 }

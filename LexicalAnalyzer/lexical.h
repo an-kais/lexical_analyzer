@@ -7,19 +7,17 @@
 #include <vector>
 #include <algorithm>
 
+using namespace std;
 
-using std::cout;
-using std::vector;
-
-bool isID(const std::string &str);//
-bool isDigit(const std::string &str);//
-bool isSymbol(const std::string &str);//
-bool isKeyword(const std::string &str);//
-bool isReservedName(const std::string &str);//
-bool isOperator(const std::string &str);//
-bool isSeparator(const std::string &str);
-void printRoleOfToken(const vector<std::string>& tokens);
-void lexicalAnalyze(const std::string &nameOfFile);
+bool isID(const string &str);
+bool isDigit(const string &str);
+bool isSymbol(const string &str);
+bool isKeyword(const string &str);
+bool isReservedName(const string &str);
+bool isOperator(const string &str);
+bool isSeparator(const string &str);
+void printRoleOfToken(const vector<string>& tokens);
+void lexicalAnalyze(const string &nameOfFile);
 
 
 #endif //LEXICALANALYZER_LEXICAL_H

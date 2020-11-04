@@ -1,8 +1,6 @@
 #include "lexical.h"
 
-using namespace std;
-
-bool isID(const string &str){
+bool lexical_analyzer::isID(const string &str) {
     if (isdigit(str[0]))
         return false;
     int counter = 0;
@@ -14,22 +12,20 @@ bool isID(const string &str){
     return true;
 }
 
-
-bool isDigit(const string &str){
+bool lexical_analyzer::isDigit(const string &str) {
     bool digit = true;
     for (int i = 0; i < str.length(); i++){
         if (!isdigit(str[i]) && str[i] != '.')
-                digit = false;
+            digit = false;
     }
     return digit;
 }
 
-bool isSymbol(const string &str){
+bool lexical_analyzer::isSymbol(const string &str) {
     return str[0] == '\'' && str[2] == '\'';
 }
 
-
-bool isKeyword(const string &str){
+bool lexical_analyzer::isKeyword(const string &str) {
     const vector <string> keywords{"break", "do", "do", "else", "return", "for", "if", "while"};
     for(const auto& keyword : keywords)
         if (keyword == str)
@@ -38,7 +34,7 @@ bool isKeyword(const string &str){
     return false;
 }
 
-bool isReservedName(const string &str){
+bool lexical_analyzer::isReservedName(const string &str) {
     const vector <string> reserve{"bool", "char", "const", "double", "false", "true", "float", "int", "null", "void"};
     for(const auto& reserve : reserve)
         if (reserve == str)
@@ -46,8 +42,7 @@ bool isReservedName(const string &str){
     return false;
 }
 
-
-bool isOperator(const string &str){
+bool lexical_analyzer::isOperator(const string &str) {
     const vector <string> operators{"<", ">", "<=", ">=", "*", "+", "-", "/", "=", "!=", "&&", "||", "==", "!"};
     for(const auto& op : operators)
         if (op == str)
@@ -55,39 +50,56 @@ bool isOperator(const string &str){
     return false;
 }
 
-bool isSeparator(const string &str){
+bool lexical_analyzer::isSeparator(const string &str) {
     const vector <string> Separators{"{", "}", ",", "(", ")", ";"};
     for(const auto& separate : Separators)
         if (separate == str)
             return true;
-
     return false;
 }
 
-bool isNotLegal(const string &str){
+bool lexical_analyzer::isNotLegal(const string &str) {
     return str == " " || str == "\n" || str == "\r";
 }
 
-void printRoleOfToken(const string& token){
-    if(isOperator(token))
-        cout << "(operator, " << token << ")\n";
-    else if(isSeparator(token))
-        cout << "(separator, " << token << ")\n";
-    else if(isKeyword(token))
-        cout << "(keyword, " << token << ")\n";
-    else if(isReservedName(token))
-        cout << "(reserved name, " << token << ")\n";
-    else if(isDigit(token))
-        cout << "(digit, " << token << ")\n";
-    else if(isSymbol(token))
-        cout << "(symbol, " << token << ")\n";
-    else if(isID(token))
-        cout << "(identifier, " << token << ")\n";
-    else
+
+void lexical_analyzer::printRoleOfToken(const string& token) {
+    count++;
+    if (isOperator(token)){
+        table[count][0] = "operator";
+        table[count][1] = token;
+    }
+    else if(isSeparator(token)) {
+        table[count][0] = "separator";
+        table[count][1] = token;
+    }
+    else if(isKeyword(token)) {
+        table[count][0] = "keyword";
+        table[count][1] = token;
+    }
+    else if(isReservedName(token)) {
+        table[count][0] = "reserved name";
+        table[count][1] = token;
+    }
+    else if(isDigit(token)) {
+        table[count][0] = "digit";
+        table[count][1] = token;
+    }
+    else if(isSymbol(token)) {
+        table[count][0] = "symbol";
+        table[count][1] = token;
+    }
+    else if(isID(token)) {
+        table[count][0] = "identifier";
+        table[count][1] = token;
+    }
+    else {
+        count--;
         cout << "Identifier  " << token << " not found\n";
+    }
 }
 
-void lexicalAnalyze(const string &nameOfFile){
+void lexical_analyzer::lexicalAnalyze(const string &nameOfFile) {
     char ch;
     string buffer;
     fstream file(nameOfFile, fstream::in);

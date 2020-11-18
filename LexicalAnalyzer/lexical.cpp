@@ -158,6 +158,10 @@ void lexical_analyzer::lexicalAnalyze(const string &nameOfFile) {
                 printRoleOfToken(buffer);
                 buffer = "";
             }
+            if (isOperator(string(1, ch))){
+                printRoleOfToken(std::string(1, ch));
+                continue;
+            }
         }
 
         if (isSeparator(string(1, ch))){

@@ -59,6 +59,8 @@ bool lexical_analyzer::isSeparator(const string &str) {
 }
 
 bool lexical_analyzer::isNotLegal(const string &str) {
+    if (str == "\n")
+        pos++;
     return str == " " || str == "\n" || str == "\r";
 }
 
@@ -68,30 +70,37 @@ void lexical_analyzer::printRoleOfToken(const string& token) {
     if (isOperator(token)){
         table[count][0] = "operator";
         table[count][1] = token;
+        table[count][2] = to_string(pos);
     }
     else if(isSeparator(token)) {
         table[count][0] = "separator";
         table[count][1] = token;
+        table[count][2] = to_string(pos);
     }
     else if(isKeyword(token)) {
         table[count][0] = "keyword";
         table[count][1] = token;
+        table[count][2] = to_string(pos);
     }
     else if(isReservedName(token)) {
         table[count][0] = "reserved name";
         table[count][1] = token;
+        table[count][2] = to_string(pos);
     }
     else if(isDigit(token)) {
         table[count][0] = "digit";
         table[count][1] = token;
+        table[count][2] = to_string(pos);
     }
     else if(isSymbol(token)) {
         table[count][0] = "symbol";
         table[count][1] = token;
+        table[count][2] = to_string(pos);
     }
     else if(isID(token)) {
         table[count][0] = "identifier";
         table[count][1] = token;
+        table[count][2] = to_string(pos);
     }
     else {
         count--;

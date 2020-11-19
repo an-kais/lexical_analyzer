@@ -23,10 +23,11 @@ class lexical_analyzer {
 public:
     void lexicalAnalyze(const string &nameOfFile);
     void printRoleOfToken(const string &token);
-    static const int len = 2;
+    static const int len = 3;
     static const int height = 1000;
     string table[height][len];
     int count = -1;
+    int pos = 1;
 };
 
 #endif //LEXICALANALYZER_LEXICAL_H
